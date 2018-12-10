@@ -32,3 +32,5 @@ varianza<-var(hijos)
 varianza
 desvioestandar<-sd(hijos)
 desvioestandar
+ barplot(fabs,ylab="Frec. absoluta",xlab="Número de hijos",main="Número de hijos de las familias", col = c("dodgerblue4","deeppink3","indianred2","lightpink3","hotpink3","yellowgreen"),lwd=5,space = 0,ylim = c(0,6))
+ abline(h=c(2,4,6),lty=2,lwd=1,col="snow3")
