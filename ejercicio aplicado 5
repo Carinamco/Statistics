@@ -1,0 +1,31 @@
+# Los siguientes datos corresponden a las notas obtenidas por 100 alumnos en un curso de Estadı́stica (100calificaciones.xlsx)
+
+interva=c(t(X100calificaciones))
+interva
+nclass.Sturges(interva)
+range(interva)
+seq(17,100,length=nclass.Sturges(interva))
+intervalosno=cut(interva,breaks=seq(17,100,length=8),include.lowest=TRUE)
+intervalosno
+
+notas<-table(intervalosno)
+notas
+frel<-intervalosno/length(interva)
+frel<-notas/100
+frel
+facum<-cumsum(notas)
+facum
+frelacum<-facum/100
+frelacum
+tablatotal<-cbind(notas,frel,facum,frelacum)
+tablatotal
+mean(interva)
+median(interva)
+sd(interva)
+var(interva)
+
+barplot(notas,space=0,ylim = c(0,25),col=rainbow(7),border = "snow4",lwd=3,main="Calificación de los 100 estudiantes",xlab = "calificación (base 100)",ylab = "# de alumnos")
+abline(h=c(5,10,15,20,25),lwd=0.8,lty=3,col="hotpink3")
+
+la<- c("[17,28.9]","(28.9,40.7]","(40.7,52.6]","(52.6,64.4]","(64.4,76.3]","(76.3,88.1]","(88.1,100]")
+pie(notas,labels=etiqueta,main="Calificación de los 100 estudiantes",col=rainbow(7))
