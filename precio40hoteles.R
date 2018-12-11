@@ -1,0 +1,37 @@
+library(readxl)
+precio <- read_excel("C:/Users/carinamcor/Dropbox/precio.xlsx")
+View(precio)
+hotel=c(t(precio))
+hotel
+nclass.Sturges(hotel)
+range(hotel)
+seq(3.3,6.1,length=7)
+precios=cut(hotel,breaks = seq(3.3,6.1,length=7),include.lowest = TRUE)
+precios
+
+fabs<-table(precios)
+fabs
+frel<-fabs/length(hotel)
+frel
+facum<-cumsum(fabs)
+facum
+frelacum<-facum/40
+frelacum
+tablaprecios<-cbind(fabs,frel,facum,frelacum)
+tablaprecios
+
+plot(fabs,type="o",pch=11,cex=2.5,col="salmon",ylim=c(0,12),lty=3,xlab="precio(en miles de pesos)",ylab="# de hoteles con el precio del imtervalo")
+abline(h=c(2,4,6,8,10,12),lty=4,col="plum1")
+abline(v=c(1,2,3,4,5,6),lty=4,col="plum1")
+barplot(fabs,col=rainbow(7),border="white",lwd=5,ylim=c(0,12),density=c(25,35,45,55,65,75,80),ylab="# de hoteles con el precio del imtervalo",xlab="precio (en miles)",main="precio de 40 hoteles")
+abline(h=c(2,4,6,8,10,12),lty=4,col="plum1")
+
+etiqueta<-c("[3.3,3.77]-7.5%","(3.77,4.23]-17.5%","(4.23,4.7]-25%","(4.7,5.17]-27.5%","(5.17,5.63]-10%","(5.63,6.1]-12.5%")
+pie(fabs,labels=etiqueta,col=rainbow(6),main="Precio por habitación de 40 hoteles")
+library(plotrix)
+pie3D(fabs,labels=etiqueta,col=rainbow(6),main="Precio por habitación de 40 hoteles",explode=0.2)
+barplot(facum,col="pink3",border="white",lwd=5,ylim=c(0,40),ylab="# de hoteles acumulada",xlab="precio (en miles)",main="precioacumulado de 40 hoteles")
+abline(h=c(10,20,30,40),lty=4,col="plum1")
+summary(hotel)
+sd(hotel)
+var(hot)
