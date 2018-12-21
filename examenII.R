@@ -20,3 +20,18 @@ stripchart(examen[1:3],vertical = TRUE,las=1,pch = 8, cex = 2,ylim = c(98,110),c
 abline(h=c(98,100,102,104,106,108,110),col="snow3",lty=3)
 
 boxplot(examen[1:3],las=1, col = c("violetred3","pink3","darkolivegreen3"),ylab="# de árboles plantados",xlab="Trabajador", main="Comparación de la producción de los trabajadores")
+
+# Para obtener la mediana, media y rango
+summary(examen)
+# Calcular la desviación estandar
+sd(c(t(examen[1])))
+sd(c(t(examen[2])))
+sd(c(t(examen[3])))
+# Calcular la varianza
+var(c(t(examen[1])))
+var(c(t(examen[2])))
+var(c(t(examen[3])))
+# Para calcular cual trabajó mas:
+sum(c(t(examen[1])))
+sum(c(t(examen[2])))
+sum(c(t(examen[3])))
